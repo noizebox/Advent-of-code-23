@@ -19,16 +19,11 @@ def pre_parse_data(data):
 
     return parsed
 
-def game_possible(game):
-    for colour, max_val  in MAX_COLOURS.items():
-        if game[colour] > max_val:
-            return False
-    return True
-
 def games_possible(games):
     for game in games:
-        if not game_possible(game):
-            return False
+        for colour, max_val  in MAX_COLOURS.items():
+            if game[colour] > max_val:
+                return False
     return True
 
 def min_power(games):
